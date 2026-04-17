@@ -109,12 +109,14 @@ class MultiDirectionalInfiniteScrollState
 
     if (clamped == _ctrl.position.minScrollExtent ||
         clamped == _ctrl.position.maxScrollExtent) {
-      _ctrl.notifyListeners();
+      _checkBounds();
       Future.delayed(const Duration(milliseconds: 1), () {
         SchedulerBinding.instance.addPostFrameCallback((_) {
           _ctrl.animateTo(
-            target.clamp(_ctrl.position.minScrollExtent,
-                _ctrl.position.maxScrollExtent),
+            target.clamp(
+              _ctrl.position.minScrollExtent,
+              _ctrl.position.maxScrollExtent,
+            ),
             duration: duration,
             curve: Curves.fastOutSlowIn,
           );
@@ -122,8 +124,7 @@ class MultiDirectionalInfiniteScrollState
       });
     }
 
-    _ctrl.animateTo(clamped,
-        duration: duration, curve: Curves.fastOutSlowIn);
+    _ctrl.animateTo(clamped, duration: duration, curve: Curves.fastOutSlowIn);
   }
 
   void _onScroll() {
@@ -159,11 +160,9 @@ class MultiDirectionalInfiniteScrollState
     return MouseRegion(
       onEnter: (_) {
         cancelParentScroll.value = true;
-        cancelParentScroll.notifyListeners();
       },
       onExit: (_) {
         cancelParentScroll.value = false;
-        cancelParentScroll.notifyListeners();
       },
       child: Listener(
         onPointerSignal: (event) {
@@ -194,7 +193,10 @@ class MultiDirectionalInfiniteScrollState
                   (_, i) => SizedBox(
                     key: ValueKey(_top[i] * -1),
                     child: widget.itemBuilder(
-                        _top[i], i == _top.length - 1, false),
+                      _top[i],
+                      i == _top.length - 1,
+                      false,
+                    ),
                   ),
                   childCount: _top.length,
                 ),
@@ -205,7 +207,10 @@ class MultiDirectionalInfiniteScrollState
                   (_, i) => SizedBox(
                     key: ValueKey(_bottom[i]),
                     child: widget.itemBuilder(
-                        _bottom[i], false, i == _bottom.length - 1),
+                      _bottom[i],
+                      false,
+                      i == _bottom.length - 1,
+                    ),
                   ),
                   childCount: _bottom.length,
                 ),
