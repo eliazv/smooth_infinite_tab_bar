@@ -8,8 +8,8 @@ A horizontally scrolling tab bar that loads items infinitely in both directions.
 Smooth animations, auto-scroll on selection, and a clean API designed for months, weeks, dates, or any ordered infinite sequence.
 
 <p align="center">
-  <img src="assets/readme/all.gif" width="48%" alt="smooth_infinite_tab_bar demo" />
-  <img src="assets/readme/month.gif" width="48%" alt="Month selector demo" />
+  <img src="https://raw.githubusercontent.com/eliazv/smooth_infinite_tab_bar/master/assets/readme/all.gif" width="48%" alt="smooth_infinite_tab_bar demo" />
+  <img src="https://raw.githubusercontent.com/eliazv/smooth_infinite_tab_bar/master/assets/readme/month.gif" width="48%" alt="Month selector demo" />
 </p>
 
 ## Why this package

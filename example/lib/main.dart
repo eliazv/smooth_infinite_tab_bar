@@ -25,7 +25,7 @@ class _HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<_HomePage> {
-  // ── Example 1: Month selector (same as Cashew) ──────────────────
+  // ── Example 1: Month selector ─────────────────────────────────────
 
   int _monthIndex = 0;
 
