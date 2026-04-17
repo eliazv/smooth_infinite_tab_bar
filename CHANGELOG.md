@@ -1,3 +1,8 @@
+## 0.0.2
+
+- Fixed README GIF previews for pub.dev by using absolute GitHub URLs.
+- Removed legacy "Cashew" references from example code and documentation.
+
 ## 0.0.1
 
 - First public release of `smooth_infinite_tab_bar`.
