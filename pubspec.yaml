@@ -1,0 +1,28 @@
+name: smooth_infinite_tab_bar
+description: "A horizontally scrolling tab bar with infinite bidirectional items. Smooth animations, auto-scroll on selection, and fully customizable. Zero dependencies beyond Flutter SDK."
+version: 0.0.1
+homepage: https://github.com/eliazv/smooth_infinite_tab_bar
+repository: https://github.com/eliazv/smooth_infinite_tab_bar
+issue_tracker: https://github.com/eliazv/smooth_infinite_tab_bar/issues
+topics:
+  - tab-bar
+  - infinite-scroll
+  - animations
+  - ui
+  - smooth
+
+environment:
+  sdk: ^3.10.0
+  flutter: ">=3.24.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true

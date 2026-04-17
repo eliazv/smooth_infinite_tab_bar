@@ -1,0 +1,16 @@
+name: smooth_infinite_tab_bar_example
+description: Example app for smooth_infinite_tab_bar.
+publish_to: none
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  smooth_infinite_tab_bar:
+    path: ../
+
+flutter:
+  uses-material-design: true
