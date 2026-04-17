@@ -7,7 +7,19 @@ A horizontally scrolling tab bar that loads items infinitely in both directions.
 
 Smooth animations, auto-scroll on selection, and a clean API designed for months, weeks, dates, or any ordered infinite sequence.
 
-![smooth_infinite_tab_bar demo](assets/readme/smooth_infinite_tab_bar_demo.gif)
+![smooth_infinite_tab_bar demo](assets/readme/all.gif)
+
+![Month selector demo](assets/readme/month.gif)
+
+## Why this package
+
+Most tab bars are limited to a fixed list of items. When you need to navigate through months, weeks, or any large ordered dataset, you need a tab bar that:
+
+- Renders items lazily as the user scrolls
+- Snaps visually to the selected item
+- Shows contextual overflow hints when far from the default position
+
+`smooth_infinite_tab_bar` handles all of this with a single widget.
 
 ## Features
 
@@ -19,16 +31,6 @@ Smooth animations, auto-scroll on selection, and a clean API designed for months
 - Overflow arrow buttons appear automatically when scrolled far from origin
 - Fully customizable colors, widths, icons and callbacks
 - Zero dependencies beyond the Flutter SDK
-
-## Why this package
-
-Most tab bars are limited to a fixed list of items. When you need to navigate through months, weeks, or any large ordered dataset, you need a tab bar that:
-
-- Renders items lazily as the user scrolls
-- Snaps visually to the selected item
-- Shows contextual overflow hints when far from the default position
-
-`smooth_infinite_tab_bar` handles all of this with a single widget.
 
 ## Installation
 
@@ -97,21 +99,21 @@ InfiniteTabBar(
 
 ## API
 
-| Parameter | Type | Default | Description |
-|---|---|---|---|
-| `selectedIndex` | `int` | required | Currently selected item |
-| `labelBuilder` | `String Function(int)` | required | Primary label |
-| `onSelected` | `void Function(int)` | required | Tap callback |
-| `shouldAddBottom` | `bool Function(int)` | required | Load control (right) |
-| `shouldAddTop` | `bool Function(int)` | required | Load control (left) |
-| `sublabelBuilder` | `String? Function(int)?` | — | Secondary label (e.g. year) |
-| `isHighlighted` | `bool Function(int)?` | — | Show highlight dot |
-| `itemWidth` | `double` | `100` | Width of each item |
-| `height` | `double` | `50` | Bar height |
-| `selectedTextColor` | `Color?` | theme | Selected label color |
-| `unselectedTextColor` | `Color?` | theme | Unselected label color |
-| `selectedIndicatorColor` | `Color?` | theme | Bottom indicator color |
-| `highlightDotColor` | `Color?` | primary | Highlight dot color |
+| Parameter                | Type                     | Default  | Description                 |
+| ------------------------ | ------------------------ | -------- | --------------------------- |
+| `selectedIndex`          | `int`                    | required | Currently selected item     |
+| `labelBuilder`           | `String Function(int)`   | required | Primary label               |
+| `onSelected`             | `void Function(int)`     | required | Tap callback                |
+| `shouldAddBottom`        | `bool Function(int)`     | required | Load control (right)        |
+| `shouldAddTop`           | `bool Function(int)`     | required | Load control (left)         |
+| `sublabelBuilder`        | `String? Function(int)?` | —        | Secondary label (e.g. year) |
+| `isHighlighted`          | `bool Function(int)?`    | —        | Show highlight dot          |
+| `itemWidth`              | `double`                 | `100`    | Width of each item          |
+| `height`                 | `double`                 | `50`     | Bar height                  |
+| `selectedTextColor`      | `Color?`                 | theme    | Selected label color        |
+| `unselectedTextColor`    | `Color?`                 | theme    | Unselected label color      |
+| `selectedIndicatorColor` | `Color?`                 | theme    | Bottom indicator color      |
+| `highlightDotColor`      | `Color?`                 | primary  | Highlight dot color         |
 
 ## Example app
 
@@ -123,13 +125,13 @@ See `example/lib/main.dart` for a complete demo with:
 
 ## Author
 
-Created by Elia Zavatta.
+Created by **Elia Zavatta**.
 
 I build production-ready Flutter apps and reusable UI components.
 
-- GitHub: https://github.com/eliazv
-- LinkedIn: https://www.linkedin.com/in/eliazavatta/
-- Email: info@eliazavatta.it
+- GitHub: [github.com/eliazv](https://github.com/eliazv)
+- LinkedIn: [linkedin.com/in/eliazavatta](https://www.linkedin.com/in/eliazavatta/)
+- Email: [info@eliazavatta.it](mailto:info@eliazavatta.it)
 
 ## Related smooth packages
 

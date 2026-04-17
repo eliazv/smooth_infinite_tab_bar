@@ -13,7 +13,7 @@ ValueNotifier<bool> cancelParentScroll = ValueNotifier<bool>(false);
 /// zero and above grow to the right (or downward).
 class MultiDirectionalInfiniteScroll extends StatefulWidget {
   const MultiDirectionalInfiniteScroll({
-    Key? key,
+    super.key,
     required this.itemBuilder,
     required this.shouldAddTop,
     required this.shouldAddBottom,
@@ -28,7 +28,7 @@ class MultiDirectionalInfiniteScroll extends StatefulWidget {
     this.onScroll,
     this.physics,
     this.scrollController,
-  }) : super(key: key);
+  });
 
   /// Build a single item.
   ///

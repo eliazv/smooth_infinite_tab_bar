@@ -27,7 +27,7 @@ import 'multi_directional_infinite_scroll.dart';
 /// ```
 class InfiniteTabBar extends StatefulWidget {
   const InfiniteTabBar({
-    Key? key,
+    super.key,
     required this.selectedIndex,
     required this.labelBuilder,
     required this.onSelected,
@@ -48,7 +48,7 @@ class InfiniteTabBar extends StatefulWidget {
     this.onTrailingOverflowTap,
     this.initialItems = 10,
     this.width,
-  }) : super(key: key);
+  });
 
   /// The currently selected item index.
   final int selectedIndex;
@@ -105,8 +105,7 @@ class InfiniteTabBar extends StatefulWidget {
 }
 
 class InfiniteTabBarState extends State<InfiniteTabBar> {
-  final _scrollKey =
-      GlobalKey<MultiDirectionalInfiniteScrollState>();
+  final _scrollKey = GlobalKey<MultiDirectionalInfiniteScrollState>();
 
   bool _showLeadingOverflow = false;
   bool _showTrailingOverflow = false;
@@ -128,8 +127,7 @@ class InfiniteTabBarState extends State<InfiniteTabBar> {
   /// Smoothly scrolls the bar so that [index] is centered.
   void scrollToIndex(int index, {Duration? duration}) {
     final w = _measureWidth(context);
-    final position =
-        -w / 2 + widget.itemWidth / 2 + index * widget.itemWidth;
+    final position = -w / 2 + widget.itemWidth / 2 + index * widget.itemWidth;
     _scrollKey.currentState?.scrollTo(
       duration ?? const Duration(milliseconds: 700),
       position: position,
@@ -167,11 +165,14 @@ class InfiniteTabBarState extends State<InfiniteTabBar> {
     final w = _measureWidth(context);
     final selected =
         widget.selectedTextColor ?? Theme.of(context).colorScheme.onSurface;
-    final unselected = widget.unselectedTextColor ??
-        Theme.of(context).colorScheme.onSurface.withOpacity(0.4);
-    final indicator = widget.selectedIndicatorColor ??
+    final unselected =
+        widget.unselectedTextColor ??
+        Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.4);
+    final indicator =
+        widget.selectedIndicatorColor ??
         Theme.of(context).colorScheme.onSurface;
-    final track = widget.trackColor ??
+    final track =
+        widget.trackColor ??
         Theme.of(context).colorScheme.surfaceContainerHighest;
     final highlight =
         widget.highlightDotColor ?? Theme.of(context).colorScheme.primary;
@@ -183,11 +184,14 @@ class InfiniteTabBarState extends State<InfiniteTabBar> {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           if (!mounted) return;
           final w2 = _measureWidth(context);
-          final pos = -w2 / 2 +
+          final pos =
+              -w2 / 2 +
               widget.itemWidth / 2 +
               widget.selectedIndex * widget.itemWidth;
-          _scrollKey.currentState
-              ?.scrollTo(const Duration(milliseconds: 700), position: pos);
+          _scrollKey.currentState?.scrollTo(
+            const Duration(milliseconds: 700),
+            position: pos,
+          );
         });
         return true;
       },
@@ -229,18 +233,20 @@ class InfiniteTabBarState extends State<InfiniteTabBar> {
                               width: widget.itemWidth,
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
-                                    horizontal: 5),
+                                  horizontal: 5,
+                                ),
                                 child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     AnimatedSwitcher(
-                                      duration:
-                                          const Duration(milliseconds: 300),
+                                      duration: const Duration(
+                                        milliseconds: 300,
+                                      ),
                                       child: Text(
                                         widget.labelBuilder(index),
                                         key: ValueKey(
-                                            '${index}_${isSelected}_label'),
+                                          '${index}_${isSelected}_label',
+                                        ),
                                         style: TextStyle(
                                           fontSize: 14,
                                           color: isSelected
@@ -255,28 +261,32 @@ class InfiniteTabBarState extends State<InfiniteTabBar> {
                                         textAlign: TextAlign.center,
                                       ),
                                     ),
-                                    Builder(builder: (context) {
-                                      final sub = widget.sublabelBuilder
-                                          ?.call(index);
-                                      if (sub == null) {
-                                        return const SizedBox.shrink();
-                                      }
-                                      return AnimatedSwitcher(
-                                        duration: const Duration(
-                                            milliseconds: 300),
-                                        child: Text(
-                                          sub,
-                                          key: ValueKey(
-                                              '${index}_${isSelected}_sub'),
-                                          style: TextStyle(
-                                            fontSize: 9,
-                                            color: isSelected
-                                                ? selected
-                                                : unselected,
+                                    Builder(
+                                      builder: (context) {
+                                        final sub = widget.sublabelBuilder
+                                            ?.call(index);
+                                        if (sub == null) {
+                                          return const SizedBox.shrink();
+                                        }
+                                        return AnimatedSwitcher(
+                                          duration: const Duration(
+                                            milliseconds: 300,
                                           ),
-                                        ),
-                                      );
-                                    }),
+                                          child: Text(
+                                            sub,
+                                            key: ValueKey(
+                                              '${index}_${isSelected}_sub',
+                                            ),
+                                            style: TextStyle(
+                                              fontSize: 9,
+                                              color: isSelected
+                                                  ? selected
+                                                  : unselected,
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    ),
                                   ],
                                 ),
                               ),
@@ -299,7 +309,7 @@ class InfiniteTabBarState extends State<InfiniteTabBar> {
                                     topLeft: Radius.circular(40),
                                     topRight: Radius.circular(40),
                                   ),
-                                  color: highlight.withOpacity(0.5),
+                                  color: highlight.withValues(alpha: 0.5),
                                 ),
                                 width: 75,
                                 height: 7,
@@ -323,10 +333,8 @@ class InfiniteTabBarState extends State<InfiniteTabBar> {
                         alignment: AlignmentDirectional.bottomCenter,
                         child: _ScaleOpacity(
                           animateIn: isSelected,
-                          duration:
-                              const Duration(milliseconds: 500),
-                          durationOpacity:
-                              const Duration(milliseconds: 300),
+                          duration: const Duration(milliseconds: 500),
+                          durationOpacity: const Duration(milliseconds: 300),
                           curve: isSelected
                               ? Curves.decelerate
                               : Curves.easeOutQuart,
@@ -360,27 +368,31 @@ class InfiniteTabBarState extends State<InfiniteTabBar> {
                 curve: Curves.fastOutSlowIn,
                 child: Padding(
                   padding: const EdgeInsetsDirectional.only(
-                      top: 8, bottom: 8, start: 2),
+                    top: 8,
+                    bottom: 8,
+                    start: 2,
+                  ),
                   child: Material(
                     color: Theme.of(context).colorScheme.primary,
                     borderRadius: BorderRadius.circular(10),
                     child: InkWell(
                       borderRadius: BorderRadius.circular(10),
-                      onTap: widget.onLeadingOverflowTap ??
+                      onTap:
+                          widget.onLeadingOverflowTap ??
                           () {
                             _scrollKey.currentState?.scrollTo(
-                                const Duration(milliseconds: 700));
+                              const Duration(milliseconds: 700),
+                            );
                             widget.onSelected(0);
                           },
                       child: SizedBox(
                         width: 44,
                         height: 34,
-                        child: widget.overflowLeadingIcon ??
+                        child:
+                            widget.overflowLeadingIcon ??
                             Icon(
                               Icons.arrow_left_rounded,
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .onPrimary,
+                              color: Theme.of(context).colorScheme.onPrimary,
                               size: 28,
                             ),
                       ),
@@ -401,27 +413,31 @@ class InfiniteTabBarState extends State<InfiniteTabBar> {
                 curve: Curves.fastOutSlowIn,
                 child: Padding(
                   padding: const EdgeInsetsDirectional.only(
-                      top: 8, bottom: 8, end: 2),
+                    top: 8,
+                    bottom: 8,
+                    end: 2,
+                  ),
                   child: Material(
                     color: Theme.of(context).colorScheme.primary,
                     borderRadius: BorderRadius.circular(10),
                     child: InkWell(
                       borderRadius: BorderRadius.circular(10),
-                      onTap: widget.onTrailingOverflowTap ??
+                      onTap:
+                          widget.onTrailingOverflowTap ??
                           () {
                             _scrollKey.currentState?.scrollTo(
-                                const Duration(milliseconds: 700));
+                              const Duration(milliseconds: 700),
+                            );
                             widget.onSelected(0);
                           },
                       child: SizedBox(
                         width: 44,
                         height: 34,
-                        child: widget.overflowTrailingIcon ??
+                        child:
+                            widget.overflowTrailingIcon ??
                             Icon(
                               Icons.arrow_right_rounded,
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .onPrimary,
+                              color: Theme.of(context).colorScheme.onPrimary,
                               size: 28,
                             ),
                       ),
