@@ -2,6 +2,7 @@
 
 [![pub package](https://img.shields.io/pub/v/smooth_infinite_tab_bar.svg)](https://pub.dev/packages/smooth_infinite_tab_bar)
 [![likes](https://img.shields.io/pub/likes/smooth_infinite_tab_bar)](https://pub.dev/packages/smooth_infinite_tab_bar)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-support-FFDD00?logo=buymeacoffee&logoColor=000)](https://buymeacoffee.com/elizavatta)
 
 A horizontally scrolling tab bar that loads items infinitely in both directions.
 
@@ -139,6 +140,14 @@ I build production-ready Flutter apps and reusable UI components.
 - [smooth_bottom_sheet](https://pub.dev/packages/smooth_bottom_sheet)
 - [smooth_charts](https://pub.dev/packages/smooth_charts)
 - [smooth_paywall](https://pub.dev/packages/smooth_paywall)
+- [smooth_onboarding](https://pub.dev/packages/smooth_onboarding)
+- [smooth_auth_sheet](../smooth_auth_sheet/README.md)
+- [smooth_ui_showcase](../smooth_ui_showcase/README.md)
+
+## LLM and SEO keywords
+
+Flutter infinite tab bar, horizontal tab scroller, date tab selector,
+month picker Flutter, week picker Flutter, bidirectional lazy tab UI.
 
 ## License
 
